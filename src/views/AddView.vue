@@ -26,11 +26,7 @@
                     >Invalid date</span
                   >
                 </md-field>
-              </div>
-
-              <div class="md-layout md-gutter">
-                <div class="md-layout-item md-small-size-100">
-                  <md-field>
+                <md-field>
                     <label for="muscleGroup">Muscle Group</label>
                     <md-select
                       name="muscleGroup"
@@ -55,10 +51,7 @@
                     </md-select>
                     <span class="md-error">The Muscle Group is required</span>
                   </md-field>
-                </div>
-
-                <div class="md-layout-item md-small-size-100">
-                  <md-field>
+                   <md-field>
                     <label for="exercise">Exercise</label>
                     <md-input
                       name="exercise"
@@ -75,11 +68,7 @@
                       >Invalid Exercise</span
                     >
                   </md-field>
-                </div>
-              </div>
-
-              <div class="md-layout-item md-small-size-100">
-                <md-field>
+                  <md-field>
                   <label for="weight">Weight</label>
                   <md-input
                     name="weight"
@@ -94,9 +83,6 @@
                     >Invalid Weight</span
                   >
                 </md-field>
-              </div>
-
-              <div class="md-layout-item md-small-size-100">
                 <md-field>
                   <label for="reps">Reps</label>
                   <md-input
@@ -112,9 +98,6 @@
                     >Invalid Reps</span
                   >
                 </md-field>
-              </div>
-
-              <div class="md-layout-item md-small-size-100">
                 <md-field>
                   <label for="sets">Sets</label>
                   <md-input
@@ -131,6 +114,11 @@
                   >
                 </md-field>
               </div>
+
+
+            
+
+            
             </div>
           </md-card-content>
 
