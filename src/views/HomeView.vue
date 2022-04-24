@@ -32,6 +32,7 @@
           <md-table-head>Weight</md-table-head>
           <md-table-head>Reps</md-table-head>
           <md-table-head>Sets</md-table-head>
+          <md-table-head>Action</md-table-head>
         </md-table-row>
         <WorkoutLog v-for="log of workoutLogs" v-bind:key="log.key" v-bind:log="log"
           >{{ log }}

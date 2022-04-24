@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/add">Add</router-link> |
-      <router-link to="/delete">Delete</router-link> |
+      <!-- <router-link to="/delete">Delete</router-link> | -->
       <router-link to="/update">Update</router-link>
     </nav>
     <router-view/>

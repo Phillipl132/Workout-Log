@@ -22,7 +22,7 @@
             md-confirm-text="Cool!"
           />
           <md-button class="md-accent md-raised" @click="deleteWorkoutLog"
-            >Alert</md-button
+            >DELETE</md-button
           >
         </md-card-actions>
       </md-card>
