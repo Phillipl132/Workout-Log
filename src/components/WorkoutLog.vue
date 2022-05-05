@@ -13,14 +13,17 @@
         class="md-primary"
         
         >DELETE</md-button
-      ></md-table-cell
+      > 
+      <EditDialogueComponent v-bind:id="log.Id">  </EditDialogueComponent> 
+      </md-table-cell
     >
   </md-table-row>
 </template>
 <script>
+import EditDialogueComponent from "@/components/EditDialogueComponent.vue";
 export default {
   props: ["log"],
-
+  components: { EditDialogueComponent },
   methods: {
     deleteWorkoutLog() {
       const serverURL =
