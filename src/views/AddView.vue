@@ -126,7 +126,7 @@
 
           <md-card-actions>
             <md-button type="submit" class="md-primary" :disabled="sending"
-              >Create WorkoutLog</md-button
+              >Create WorkoutLog</md-button  
             >
           </md-card-actions>
         </md-card>
@@ -198,11 +198,11 @@ export default {
     clearForm() {
       this.$v.$reset();
       this.form.date = null;
-      this.form.time = null;
-      this.form.category = null;
-      this.form.name = null;
+      this.form.muscleGroup = null;
+      this.form.exercise = null;
       this.form.weight = null;
-      this.form.caleries = null;
+      this.form.reps = null;
+      this.form.sets = null;
     },
     saveWorkoutLog() {
       this.sending = true;
@@ -211,6 +211,7 @@ export default {
           ? "https://jjc4ufs7f5.execute-api.us-east-2.amazonaws.com/dev"
           : "http://localhost:3000";
       console.log(serverURL);
+      const log = {...this.form, encryptedUserId: this.$router.params.userId}
       fetch(`${serverURL}/workoutLog`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
@@ -219,7 +220,7 @@ export default {
           //"Access-Control-Allow-Origin": "*",
           Accept: "*/*",
         },
-        body: JSON.stringify(this.form),
+        body: JSON.stringify(log),
       })
         .then((response) => {
           return response.json();
@@ -235,6 +236,7 @@ export default {
     validateWorkoutLog() {
       console.log(this.form);
       this.saveWorkoutLog();
+      this.clearForm();
     },
   },
 };

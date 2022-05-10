@@ -1,16 +1,30 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/add">Add</router-link> |
+      <router-link v-if="userId != null" :to="{ name: 'home', params: { userId: $route.params.userId }}">HOME |</router-link> 
+      <router-link v-if="userId != null" :to="{ name: 'add', params: { userId: $route.params.userId }}"> ADD LOG</router-link> 
       <!-- <router-link to="/delete">Delete</router-link> | -->
-      <router-link to="/update">Update</router-link>
+      <!--router-link to="/update">Update</router-link> -->
     </nav>
     <router-view/>
   </div>
 </template>
+<script>
+export default {
+  created(){
+    this.userId = this.$route.params.userId
+  },
 
+  data() {
+    return{
+      userId: null
+    }
+  },
+  methods: {
+   
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

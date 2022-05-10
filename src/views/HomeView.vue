@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <p>Welcome to the workout Log App. Let's get started!</p >
+    <p>WELCOME TO PROGRESSIVE LOGGER. LET'S GET STARTED.</p >
     <!-- <div>
       <table v-if="workoutLogs.length"> 
        <tr>   
@@ -21,26 +21,26 @@
     <div>
       <md-table md-card>
         <md-table-toolbar>
-          <h1 class="md-title">Workout Logs</h1>
+          <h1 class="md-title">WORKOUT LOGS</h1>
         </md-table-toolbar>
 
         <md-table-row>
-          <md-table-head>ID</md-table-head> 
-          <md-table-head>Date</md-table-head>
-          <md-table-head>Muscle Group</md-table-head>
-          <md-table-head>Exercise</md-table-head>
-          <md-table-head>Weight</md-table-head>
-          <md-table-head>Reps</md-table-head>
-          <md-table-head>Sets</md-table-head>
-          <md-table-head>Action</md-table-head>
+          <md-table-head>LOG ID</md-table-head> 
+          <md-table-head>DATE</md-table-head>
+          <md-table-head>MUSCLE GROUP</md-table-head>
+          <md-table-head>EXERCISE</md-table-head>
+          <md-table-head>WEIGHT</md-table-head>
+          <md-table-head>REPS</md-table-head>
+          <md-table-head>SETS</md-table-head>
+          <md-table-head>ACTION</md-table-head>
         </md-table-row>
         <WorkoutLog v-for="log of workoutLogs" v-bind:key="log.key" v-bind:log="log"
           >{{ log }}
         </WorkoutLog>
       </md-table>
     </div>
-    <button @click="addPlaceHolderLog">click to add place holder log</button>
-    <button @click="workoutLogs.push({})">click to add an empty log</button>
+    <!--button @click="addPlaceHolderLog">click to add place holder log</button> -->
+    <button @click="workoutLogs.push({})">click to add place holder log</button>
   </div>
 </template>
 
@@ -49,12 +49,13 @@ import WorkoutLog from "@/components/WorkoutLog.vue";
 export default {
   components: { WorkoutLog },
   created() {
+    const encryptedUserId = "abc"
     const serverURL = 
     process.env.NODE_ENV === "production"
     ? "https://jjc4ufs7f5.execute-api.us-east-2.amazonaws.com/dev"
     :"http://localhost:3000"
     console.log(serverURL)
-    fetch(`${serverURL}/workoutLogs`, {
+    fetch(`${serverURL}/workoutLogs?encryptedUserId=${encryptedUserId}`, {
       method: "GET",
       mode: "cors",
       headers: {

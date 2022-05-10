@@ -4,8 +4,6 @@
       <md-dialog-title>Edit WorkoutLog</md-dialog-title>
       <form novalidate class="md-layout" @submit.prevent="validateWorkoutLog">
         <md-card class="md-layout-item md-size-50 md-small-size-100">
-        
-
           <md-card-content>
             <div class="md-layout md-gutter">
               <div class="md-layout-item md-small-size-100">
@@ -117,7 +115,6 @@
           </md-card-content>
 
           <md-progress-bar md-mode="indeterminate" v-if="sending" />
-
         </md-card>
 
         <md-snackbar :md-active.sync="workoutLogSaved"
@@ -127,18 +124,14 @@
       </form>
 
       <md-dialog-actions>
-        <md-button class="md-primary" @click="showDialog = false"
+        <md-button class="md-primary" @click="closedDialogue()" 
           >Close</md-button
         >
-        <md-button class="md-primary" @click="updateWorkoutLog"
-          >Save</md-button
-        >
+        <md-button class="md-primary" @click="updateWorkoutLog">Save</md-button>
       </md-dialog-actions>
     </md-dialog>
 
-    <md-button class="md-primary md-raised" @click="showDialog = true"
-      >Edit</md-button
-    >
+    <md-button class="md-primary" @click="showDialog = true">Edit</md-button>
   </div>
 </template>
 
@@ -147,7 +140,7 @@ import { validationMixin } from "vuelidate";
 import { required, minLength } from "vuelidate/lib/validators";
 export default {
   name: "EditDialogueComponent",
-    props: ["id"],
+  props: ["id"],
 
   mixins: [validationMixin],
   data: () => ({
@@ -196,7 +189,7 @@ export default {
         process.env.NODE_ENV === "production"
           ? "https://jjc4ufs7f5.execute-api.us-east-2.amazonaws.com/dev"
           : "http://localhost:3000";
-          this.form.Id = this.id
+      this.form.Id = this.id;
       console.log(this.form);
       fetch(`${serverURL}/workoutLog`, {
         method: "PUT", // *GET, POST, PUT, DELETE, etc.
@@ -208,12 +201,11 @@ export default {
         },
         body: JSON.stringify(this.form),
       })
-        .then((workoutLog) => {
-          return workoutLog.json();
-        })
+        
         .then((data) => {
           console.log(data);
-          this.showDialog = false
+          this.showDialog = false;
+          document.location.reload(); //add refresh page
         })
         .catch((err) => {
           console.log(err);
@@ -237,6 +229,12 @@ export default {
       this.form.name = null;
       this.form.weight = null;
       this.form.caleries = null;
+    
+    },
+    closedDialogue() {
+        this.clearForm()
+        this.showDialog = false 
+
     },
     saveWorkoutLog() {
       this.sending = true;
@@ -259,7 +257,6 @@ export default {
       }
     },
   },
-  
 };
 </script>
 
@@ -267,8 +264,7 @@ export default {
 .md-dialog /deep/.md-dialog-container {
   max-width: 768px;
 }
-.md-card{
-    box-shadow: none
-
+.md-card {
+  box-shadow: none;
 }
 </style>
